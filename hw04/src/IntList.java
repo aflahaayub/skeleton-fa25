@@ -42,8 +42,10 @@ public class IntList {
      * This method is non-destructive, i.e. it must not modify the original list.
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if(L.rest == null){
+            return new IntList(L.first + x, L.rest);
+        }
+        return new IntList(L.first+x, incrRecursiveNondestructive(L.rest, x));
     }
 
     /**
@@ -52,8 +54,11 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        L.first += x;
+        if(L.rest == null){
+            return L;
+        }
+        return incrRecursiveDestructive(L.rest, x);
     }
 
     /**
